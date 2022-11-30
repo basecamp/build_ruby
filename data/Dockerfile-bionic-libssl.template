@@ -1,4 +1,10 @@
-FROM {{.Distro}}
+# Only produces builds for ruby >= 2.4 due to the newer openssl
+# see https://3.basecamp.com/2914079/buckets/21350690/todos/4209849128
+#
+# We should drop this variant when we move beyond bionic
+
+# Can't use {{.Distro}} since it's ubuntu:18.04:libssl
+FROM ubuntu:18.04
 RUN apt-get update
 RUN apt-get install -y build-essential \
     libc6-dev libffi-dev libgdbm-dev libncurses5-dev \
