@@ -48,6 +48,9 @@ Follow the [README](https://github.com/basecamp/work#first-time-setup) in order 
 
     $ bin/build_ruby -d ubuntu:18.04 -a amd64 -i "37s~bionic" -r 2.4.1
     $ bin/build_ruby -d ubuntu:18.04:libssl -a amd64 -i "37s~bionic.libssl" -r 3.1.2
+    
+    # Ruby 3.2.0 + YJIT support
+    $ bin/build_ruby -d ubuntu:18.04:yjit -a amd64 -i "37s~bionic" -r 3.2.0
 
 ### Other options
 

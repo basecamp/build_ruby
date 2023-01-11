@@ -20,6 +20,7 @@ var (
 	distros = map[string]string{
 		"ubuntu:18.04":        "ubuntu:18.04",
 		"ubuntu:18.04:libssl": "ubuntu:18.04:libssl", // drop this variant once we move beyond bionic
+		"ubuntu:18.04:yjit":   "ubuntu:18.04:yjit",   // used for building 3.2.0 with yjit support
 	}
 
 	docker_client   *docker.Client
@@ -346,8 +347,10 @@ func dockerFileFromTemplate(distro, ruby_version, arch, iteration string, patche
 	switch distro {
 	case "ubuntu:18.04":
 		template_location = "data/Dockerfile-bionic.template"
-        case "ubuntu:18.04:libssl": // drop this variant once we move beyond bionic
+	case "ubuntu:18.04:libssl": // drop this variant once we move beyond bionic
 		template_location = "data/Dockerfile-bionic-libssl.template"
+	case "ubuntu:18.04:yjit": // used for building 3.2.0 with yjit support
+		template_location = "data/Dockerfile-bionic-yjit.template"
 	default:
 		template_location = "data/Dockerfile.template"
 	}
@@ -380,6 +383,8 @@ func gemfilesFromDistro(distro string) (string, string) {
 	case "ubuntu:18.04":
 		return "data/Gemfile.bionic", "data/Gemfile.bionic.lock"
 	case "ubuntu:18.04:libssl": // drop this variant once we move beyond bionic
+		return "data/Gemfile.bionic", "data/Gemfile.bionic.lock"
+	case "ubuntu:18.04:yjit": // used for building 3.2.0 with yjit support
 		return "data/Gemfile.bionic", "data/Gemfile.bionic.lock"
 	default:
 		return "data/Gemfile.template", "data/Gemfile.template.lock"
