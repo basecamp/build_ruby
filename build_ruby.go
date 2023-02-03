@@ -21,6 +21,7 @@ var (
 		"ubuntu:18.04":        "ubuntu:18.04",
 		"ubuntu:18.04:libssl": "ubuntu:18.04:libssl", // drop this variant once we move beyond bionic
 		"ubuntu:18.04:yjit":   "ubuntu:18.04:yjit",   // used for building 3.2.0 with yjit support
+		"ubuntu:18.04:libssl-yjit":   "ubuntu:18.04:libssl-yjit",   // used for building 3.2.0 with yjit support and new libssl
 	}
 
 	docker_client   *docker.Client
@@ -351,6 +352,8 @@ func dockerFileFromTemplate(distro, ruby_version, arch, iteration string, patche
 		template_location = "data/Dockerfile-bionic-libssl.template"
 	case "ubuntu:18.04:yjit": // used for building 3.2.0 with yjit support
 		template_location = "data/Dockerfile-bionic-yjit.template"
+	case "ubuntu:18.04:libssl-yjit": // used for building 3.2.0 with yjit support and new libssl
+		template_location = "data/Dockerfile-bionic-libssl-yjit.template"
 	default:
 		template_location = "data/Dockerfile.template"
 	}
@@ -385,6 +388,8 @@ func gemfilesFromDistro(distro string) (string, string) {
 	case "ubuntu:18.04:libssl": // drop this variant once we move beyond bionic
 		return "data/Gemfile.bionic", "data/Gemfile.bionic.lock"
 	case "ubuntu:18.04:yjit": // used for building 3.2.0 with yjit support
+		return "data/Gemfile.bionic", "data/Gemfile.bionic.lock"
+	case "ubuntu:18.04:libssl-yjit": // used for building 3.2.0 with yjit support and new libssl
 		return "data/Gemfile.bionic", "data/Gemfile.bionic.lock"
 	default:
 		return "data/Gemfile.template", "data/Gemfile.template.lock"
