@@ -1,6 +1,6 @@
 ruby*deb
 ruby*rpm
-bin/build_ruby
+# bin/build_ruby
 *.a
 *.o
 *.so
