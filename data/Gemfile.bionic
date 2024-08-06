@@ -3,3 +3,6 @@
 source 'https://rubygems.org'
 
 gem 'fpm', '1.11.0'
+
+# Fix for ffi-1.17.0-x86_64-linux-musl requires rubygems version >= 3.3.22
+gem 'ffi', '< 1.17.0'

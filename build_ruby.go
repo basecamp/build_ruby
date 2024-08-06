@@ -66,6 +66,11 @@ func main() {
 			Usage: "Arch to use in package filename, eg: 'none', 'all', 'amd64' etc.",
 		},
 		cli.StringFlag{
+			Name:  "platform, p",
+			Value: "linux/amd64",
+			Usage: "Platform to build the ruby package",
+		},
+		cli.StringFlag{
 			Name:  "iteration, i",
 			Value: "",
 			Usage: "eg: 37s~precise",
@@ -121,6 +126,7 @@ func buildRuby(c *cli.Context) error {
 		ForceRmTmpContainer: true,
 		InputStream:         build_tarfile,
 		OutputStream:        os.Stdout,
+		Platform:            c.String("platform"),
 	}
 	if err := docker_client.BuildImage(opts); err != nil {
 		panic(err)
