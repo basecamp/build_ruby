@@ -28,30 +28,23 @@ echo 'export GOPATH=$HOME/go' >> ~/.bash_profile
 source ~/.bash_profile
 ```
 
-#### 1.3 Install work
+#### Install pre-requisite tools and dependencies
 
-Follow the [README](https://github.com/basecamp/work#first-time-setup) in order to install `work`.
-
-#### 1.4 Install pre-requisite tools and dependencies
-
-    $ make setup
-    $ make deps
+    make setup
+    make deps
 
 ## Running it
 
-### 2. Clone and build this repo
-
-    $ work cd build_ruby
-    $ make
+    make
 
 ## Usage
 
-    $ bin/build_ruby -d ubuntu:18.04 -a amd64 -i "37s~bionic" -r 2.4.1
-    $ bin/build_ruby -d ubuntu:18.04:libssl -a amd64 -i "37s~bionic.libssl" -r 3.1.2
+    bin/build_ruby -d ubuntu:18.04 -a amd64 -i "37s~bionic" -r 2.4.1
+    bin/build_ruby -d ubuntu:18.04:libssl -a amd64 -i "37s~bionic.libssl" -r 3.1.2
 
     # Ruby 3.2.0 + YJIT support
-    $ bin/build_ruby -d ubuntu:18.04:yjit -a amd64 -i "37s~bionic" -r 3.2.0
-    $ bin/build_ruby -d ubuntu:18.04:libssl-yjit -a amd64 -i "37s~bionic.libssl" -r 3.2.0
+    bin/build_ruby -d ubuntu:18.04:yjit -a amd64 -i "37s~bionic" -r 3.2.0
+    bin/build_ruby -d ubuntu:18.04:libssl-yjit -a amd64 -i "37s~bionic.libssl" -r 3.2.0
 
 ### Other options
 
@@ -59,8 +52,8 @@ Follow the [README](https://github.com/basecamp/work#first-time-setup) in order 
 
 Specify the number of CPUs to use in the make process. If omitted defaults to the number of CPUs in your local machine (useful if you're building using a local Docker daemon), but if you're building on a VM, or a remote Docker installation specify this number to match the CPUs available:
 
-    $ bin/build_ruby -r 2.1.0 -c 16
-    $ bin/build_ruby -r 2.1.0 --cpus 16
+    bin/build_ruby -r 2.1.0 -c 16
+    bin/build_ruby -r 2.1.0 --cpus 16
 
 ### Building
 
