@@ -4,36 +4,17 @@
 
 ## Installation
 
-### 1 Install Docker and tools:
-
-#### 1.1 Linux
+### 1 Install Docker:
 
 [Follow the instructions here to install Docker](http://docs.docker.io/installation/)
-[Follow the instructions here to install Go if necessary](https://go.dev/doc/install)
 
-#### 1.2 OS X
-
-[Follow the instructions here to install Docker](https://docs.docker.com/engine/installation/mac/) to install Docker for Mac.
-
-If you need to install `go` on your Mac, best install it through Homebrew:
-
-```
-brew install go
-go version
-```
-Please note that in newer installations of Go, `GOPATH` is assumed at your $HOME/go. For this repository to build however, you'll still need to explicitly set the GOPATH variable to run `make`.
-
-```
-echo 'export GOPATH=$HOME/go' >> ~/.bash_profile
-source ~/.bash_profile
-```
+Assumes you have `mise` installed.
 
 #### Install pre-requisite tools and dependencies
 
     make setup
-    make deps
 
-## Running it
+## Building it
 
     make
 

@@ -118,7 +118,6 @@ func buildRuby(c *cli.Context) error {
 		NoCache:             true,
 		SuppressOutput:      false,
 		RmTmpContainer:      true,
-		ForceRmTmpContainer: true,
 		InputStream:         build_tarfile,
 		OutputStream:        os.Stdout,
 	}
